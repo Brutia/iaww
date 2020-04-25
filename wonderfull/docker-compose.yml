@@ -1,6 +1,7 @@
 version: '3'
 services:
   iaww:
+    build: .
     restart: always
     image: iaww/main
     container_name: iaww
@@ -17,11 +18,11 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - "/vagrant/nginx/default:/config/nginx/site-confs/default"
+      - "/vagrant/nginx:/config/nginx/site-confs/default"
       - "/etc/letsencrypt:/config"
     environment:
-      - EMAIL=pierrealain.keyser@gmail.com
-      - URL=pakeyser.ddns.net
+      - EMAIL=guillaume.andres@yahoo.fr 
+      - URL=astek-iaww.ddns.net
       - VALIDATION=http
       - TZ=Europe/Paris
       - PUID=0

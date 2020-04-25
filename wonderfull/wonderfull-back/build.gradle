@@ -22,11 +22,11 @@ task copyNpmDist(type: Copy) {
 	into file("${project.buildDir}/resources/main/dist")
 }
 
-def buildFront = tasks.getByPath(':wonderfull-front:build')
+// def buildFront = tasks.getByPath(':wonderfull-front:build')
 
 bootJar.dependsOn copyNpmDist
-bootJar.dependsOn buildFront
-copyNpmDist.mustRunAfter buildFront
+// bootJar.dependsOn buildFront
+// copyNpmDist.mustRunAfter buildFront
 
 bootJar {
 	baseName  = 'iaww'
