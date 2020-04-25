@@ -1,32 +1,21 @@
-plugins {
-	id 'org.springframework.boot' version '2.2.6.RELEASE'
-}
-
-repositories {
-	mavenCentral()
-}
 
 apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'eclipse'
+
 
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-springBoot {
-	buildInfo()
+
+compileJava {
+	options.compilerArgs = [
+			'-Amapstruct.unmappedTargetPolicy=ERROR',
+	]
 }
+
+
 sourceCompatibility = 11
 targetCompatibility = 11
 
-task copyNpmDist(type: Copy) {
-	from project(':wonderfull-front').fileTree("dist")
-	into file("${project.buildDir}/resources/main/dist")
-}
-
-def buildFront = tasks.getByPath(':wonderfull-front:build')
-
-bootJar.dependsOn copyNpmDist
-bootJar.dependsOn buildFront
-copyNpmDist.mustRunAfter buildFront
 
 bootJar {
 	baseName  = 'iaww'
@@ -34,21 +23,19 @@ bootJar {
 
 
 dependencies {
-	implementation(
-			'org.springframework.boot:spring-boot-starter-websocket',
-			'org.springframework.boot:spring-boot-starter-security',
-			'org.springframework.boot:spring-boot-starter-jdbc',
-			'org.springframework.boot:spring-boot-starter-actuator',
-			'org.springframework.security:spring-security-oauth2-client',
-			'org.springframework.security:spring-security-oauth2-jose',
-			'org.springframework.security:spring-security-messaging',
-			'org.flywaydb:flyway-core',
-			'com.h2database:h2'
-			)
 
-	testImplementation(
-			'org.springframework.boot:spring-boot-starter-test'
-			)
+			implementation 'org.springframework.boot:spring-boot-starter-websocket'
+			implementation 'org.springframework.boot:spring-boot-starter-security'
+			implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+			implementation 'org.springframework.boot:spring-boot-starter-actuator'
+			implementation 'org.springframework.security:spring-security-oauth2-client'
+		        implementation 'org.springframework.security:spring-security-oauth2-jose'
+			implementation 'org.springframework.security:spring-security-messaging'
+			implementation 'org.flywaydb:flyway-core'
+			implementation 'com.h2database:h2'
+			
+
+			testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {

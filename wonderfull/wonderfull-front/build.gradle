@@ -1,3 +1,13 @@
-plugins {
-	id "com.palantir.npm-run" version "0.5.0"
-}
+//buildscript {
+ //   ext {
+ //       springBootVersion = '2.2.6.RELEASE'
+ //   }
+  //  repositories {
+    //    mavenCentral()
+   // }
+ //   dependencies {
+ //       classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+ //   }
+//}
+//apply plugin: 'com.palantir.npm-run'
+
