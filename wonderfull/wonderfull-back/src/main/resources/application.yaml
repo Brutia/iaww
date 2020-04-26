@@ -14,4 +14,5 @@ management:
          include: info,health
 logging:
   level: 
-    org.springframework.security: ERROR
+    org.springframework.security: DEBUG
+    org.springframework.web=ERROR

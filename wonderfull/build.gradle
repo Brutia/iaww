@@ -1,0 +1,26 @@
+subprojects{
+	buildscript {
+		ext {
+			springBootVersion = "2.2.6.RELEASE"
+		}
+
+		repositories {
+			mavenCentral()
+			maven { url "http://repo.spring.io/milestone" }
+			//maven { url "https://nexus.192.168.200.237.nip.io/repository/maven-public" }
+
+		}
+		dependencies {
+			classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+		}
+	}
+
+	ext{
+		encoding = "UTF-8"
+	}
+
+	repositories {
+		mavenCentral()
+	}
+
+}
